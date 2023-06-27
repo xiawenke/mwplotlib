@@ -35,7 +35,7 @@ For more examples, see the [examples](./example.ipynb) notebook.
 <!-- Citation Y. Xu et al 2023 ApJ 947 54 -->
 <!-- https://iopscience.iop.org/article/10.3847/1538-4357/acc45c -->
 The galaxy model used in this package is based on the following paper:
-```
+```Latex
 @ARTICLE{2023ApJ...947...54X,
        author = {{Xu}, Y. and {Hao}, C.~J. and {Liu}, D.~J. and {Lin}, Z.~H. and {Bian}, S.~B. and {Hou}, L.~G. and {Li}, J.~J. and {Li}, Y.~J.},
         title = "{What Does the Milky Way Look Like?}",
