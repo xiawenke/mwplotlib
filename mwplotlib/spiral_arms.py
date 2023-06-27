@@ -70,7 +70,7 @@ class MilkyWayHandler():
 
         if(plot_type == "polar"):
             # set plot type to polar
-            if(hasattr(self.plt, "gpolarca")):
+            if(hasattr(self.plt, "polar")):
                 self.plt.polar([], [])
             else:
                 # Show warning
