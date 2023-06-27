@@ -29,7 +29,7 @@ plt.figure(figsize=(9, 9))
 plt.MilkyWay.shape(plot_type="cartesian", style="line")
 ```
 
-For more examples, see the [examples](./example.ipynb) notebook.
+For more examples, see the [examples](./example.ipynb) notebook. This example is also available on [Google Colab](https://colab.research.google.com/drive/1M9IawDSco0dbIZz5crcxTUm4NkWu43fq?usp=sharing). 
 
 # Reference
 <!-- Citation Y. Xu et al 2023 ApJ 947 54 -->
