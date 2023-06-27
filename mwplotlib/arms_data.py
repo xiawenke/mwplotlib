@@ -17,7 +17,7 @@ class ArmsData():
         self._spiral_arm_param_dict = {}
         self._spiral_arm_param_df, self._spiral_arm_param_dict = self.apjacc45ct2_ascii(); 
     
-    def __call__(self, type, format = "dict") -> Any:
+    def __call__(self, type, format = "dict"):
         if(type == 'scatter'):
             if(format == 'df'):
                 return self._HMSFR_masers_data_df
