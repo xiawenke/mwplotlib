@@ -68,7 +68,7 @@ class MilkyWayHandler():
         # plt.show()
         # input()
 
-    def shape(self, unit="kpc", style="region", step=.001, plot_type="polar", config={}, legend=True, **kwargs):
+    def shape(self, unit="kpc", style="region", step=.001, plot_type="polar", config={}, legend=True, offsets=[0, 0], **kwargs):
         """
         config in the form of:
         {
@@ -156,24 +156,24 @@ class MilkyWayHandler():
                     # self.plt.plot(thisBetaRange, thisRRange - thisArmWidth / 2, "--", label=thisRow['Spiral Arm'], color=self._get_last_color())
                     # Allow for custom kwargs:
                     if(style == "region"):
-                        self.plt.plot(thisBetaRange, thisRRange + thisArmWidth / 2, "--", **thisKwargs)
-                        self.plt.plot(thisBetaRange, thisRRange - thisArmWidth / 2, "--", color=self._get_last_color(), **self._kwargs_no_color(thisKwargs))
+                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] + thisArmWidth / 2, "--", **thisKwargs)
+                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] - thisArmWidth / 2, "--", color=self._get_last_color(), **self._kwargs_no_color(thisKwargs))
                     elif(style == "line"):
-                        self.plt.plot(thisBetaRange, thisRRange, "--", **thisKwargs)
+                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1], "--", **thisKwargs)
                     else:
                         print("Invalid style")
                         return
                 else:
                     # print(thisRow['Spiral Arm'])
                     if(style == "region"):
-                        self.plt.plot(thisBetaRange, thisRRange + thisArmWidth / 2, "--", 
+                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] + thisArmWidth / 2, "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
-                        self.plt.plot(thisBetaRange, thisRRange - thisArmWidth / 2, "--", 
+                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] - thisArmWidth / 2, "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
                     elif(style == "line"):
-                        self.plt.plot(thisBetaRange, thisRRange, "--", 
+                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1], "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
                     else:
@@ -194,24 +194,24 @@ class MilkyWayHandler():
                     # self.plt.plot(thisBetaRange, thisRRange - thisArmWidth / 2, "--", label=thisRow['Spiral Arm'], color=self._get_last_color())
                     # Allow for custom kwargs:
                     if(style == "region"):
-                        self.plt.plot(thisX_regionUpper, thisY_regionUpper, "--", **thisKwargs)
-                        self.plt.plot(thisX_regionLower, thisY_regionLower, "--", color=self._get_last_color(), **self._kwargs_no_color(thisKwargs))
+                        self.plt.plot(thisX_regionUpper + offsets[0], thisY_regionUpper + offsets[1], "--", **thisKwargs)
+                        self.plt.plot(thisX_regionLower + offsets[0], thisY_regionLower + offsets[1], "--", color=self._get_last_color(), **self._kwargs_no_color(thisKwargs))
                     elif(style == "line"):
-                        self.plt.plot(thisX, thisY, "--", **thisKwargs)
+                        self.plt.plot(thisX + offsets[0], thisY + offsets[1], "--", **thisKwargs)
                     else:
                         print("Invalid style")
                         return
                 else:
                     # print(thisRow['Spiral Arm'])
                     if(style == "region"):
-                        self.plt.plot(thisX_regionUpper, thisY_regionUpper, "--", 
+                        self.plt.plot(thisX_regionUpper + offsets[0], thisY_regionUpper + offsets[1], "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
-                        self.plt.plot(thisX_regionLower, thisY_regionLower, "--", 
+                        self.plt.plot(thisX_regionLower + offsets[0], thisY_regionLower + offsets[1], "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
                     elif(style == "line"):
-                        self.plt.plot(thisX, thisY, "--", 
+                        self.plt.plot(thisX + offsets[0], thisY + offsets[1], "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
                     else:
@@ -256,7 +256,7 @@ class MilkyWayHandler():
         # remove label from kwargs
         if('label' in kwargs):
             kwargs.pop('label')
-            
+
         return kwargs
             
 class MilkyWay():
