@@ -27,3 +27,7 @@ ax2.set_ylabel("Theta (deg)")
 ax2.MilkyWay.shape(plot_type="polar", style="region", lw=1)
 plt.show()
 # input()
+
+# python setup.py sdist build
+# python setup.py bdist_wheel --universal
+# twine upload dist/*
