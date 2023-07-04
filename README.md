@@ -30,7 +30,7 @@ plt.MilkyWay.shape(plot_type="cartesian", style="line")
 ```
 
 For more examples of usage, please refer to [examples](./example.ipynb) notebook. Those examples are also available on Google Colab:
- - [v1.1.0 (Latest)](https://colab.research.google.com/drive/1Jk6WsD9TVHMwbThDjm192cEQLWn4qpbz?usp=sharing)
+ - [v1.1.x (Latest)](https://colab.research.google.com/drive/1Jk6WsD9TVHMwbThDjm192cEQLWn4qpbz?usp=sharing)
  - [v1.0.0](https://colab.research.google.com/drive/1M9IawDSco0dbIZz5crcxTUm4NkWu43fq?usp=sharing)
 
 # Reference
