@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mwplotlib",
-    version="1.1.1",
+    version="1.1.3",
     author="Wenky",
     author_email="wxia1@fandm.edu",
     description="The Milky Way Plotting Library",

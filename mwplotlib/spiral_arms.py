@@ -68,7 +68,7 @@ class MilkyWayHandler():
         # plt.show()
         # input()
 
-    def shape(self, unit="kpc", style="region", step=.001, plot_type="polar", config={}, legend=True, offsets=[0, 0], **kwargs):
+    def shape(self, unit="kpc", style="region", step=.001, plot_type="polar", config={}, legend=True, offsets=[0, 0], rotate=0, direction="ccw", **kwargs):
         """
         config in the form of:
         {
@@ -150,30 +150,33 @@ class MilkyWayHandler():
                 thisArmWidth_ = thisArmWidth * u.kpc
                 thisArmWidth = thisArmWidth_.to(u.Unit(unit)).value
             
+            if(direction == "cw"):
+                thisBetaRange = - thisBetaRange
+            
             if(plot_type == "polar"):
                 if(thisRow['Spiral Arm'] != lastArm) :
                     # self.plt.plot(thisBetaRange, thisRRange + thisArmWidth / 2, "--", label=thisRow['Spiral Arm'])
                     # self.plt.plot(thisBetaRange, thisRRange - thisArmWidth / 2, "--", label=thisRow['Spiral Arm'], color=self._get_last_color())
                     # Allow for custom kwargs:
                     if(style == "region"):
-                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] + thisArmWidth / 2, "--", **thisKwargs)
-                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] - thisArmWidth / 2, "--", color=self._get_last_color(), **self._kwargs_no_color(thisKwargs))
+                        self.plt.plot(thisBetaRange + offsets[0] + rotate, thisRRange + offsets[1] + thisArmWidth / 2, "--", **thisKwargs)
+                        self.plt.plot(thisBetaRange + offsets[0] + rotate, thisRRange + offsets[1] - thisArmWidth / 2, "--", color=self._get_last_color(), **self._kwargs_no_color(thisKwargs))
                     elif(style == "line"):
-                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1], "--", **thisKwargs)
+                        self.plt.plot(thisBetaRange + offsets[0] + rotate, thisRRange + offsets[1], "--", **thisKwargs)
                     else:
                         print("Invalid style")
                         return
                 else:
                     # print(thisRow['Spiral Arm'])
                     if(style == "region"):
-                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] + thisArmWidth / 2, "--", 
+                        self.plt.plot(thisBetaRange + offsets[0] + rotate, thisRRange + offsets[1] + thisArmWidth / 2, "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
-                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1] - thisArmWidth / 2, "--", 
+                        self.plt.plot(thisBetaRange + offsets[0] + rotate, thisRRange + offsets[1] - thisArmWidth / 2, "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
                     elif(style == "line"):
-                        self.plt.plot(thisBetaRange + offsets[0], thisRRange + offsets[1], "--", 
+                        self.plt.plot(thisBetaRange + offsets[0] + rotate, thisRRange + offsets[1], "--", 
                             color=self._get_last_color(), **self._kwargs_no_color(thisKwargs)
                         )
                     else:
@@ -183,12 +186,12 @@ class MilkyWayHandler():
                 # self.plt.show()
                 # input()
             elif(plot_type == "cartesian"):
-                thisX = thisRRange * np.cos(thisBetaRange)
-                thisY = thisRRange * np.sin(thisBetaRange)
-                thisX_regionUpper = (thisRRange + thisArmWidth / 2) * np.cos(thisBetaRange)
-                thisY_regionUpper = (thisRRange + thisArmWidth / 2) * np.sin(thisBetaRange)
-                thisX_regionLower = (thisRRange - thisArmWidth / 2) * np.cos(thisBetaRange)
-                thisY_regionLower = (thisRRange - thisArmWidth / 2) * np.sin(thisBetaRange)
+                thisX = thisRRange * np.cos(thisBetaRange + rotate)
+                thisY = thisRRange * np.sin(thisBetaRange + rotate)
+                thisX_regionUpper = (thisRRange + thisArmWidth / 2) * np.cos(thisBetaRange + rotate)
+                thisY_regionUpper = (thisRRange + thisArmWidth / 2) * np.sin(thisBetaRange + rotate)
+                thisX_regionLower = (thisRRange - thisArmWidth / 2) * np.cos(thisBetaRange + rotate)
+                thisY_regionLower = (thisRRange - thisArmWidth / 2) * np.sin(thisBetaRange + rotate)
                 if(thisRow['Spiral Arm'] != lastArm) :
                     # self.plt.plot(thisBetaRange, thisRRange + thisArmWidth / 2, "--", label=thisRow['Spiral Arm'])
                     # self.plt.plot(thisBetaRange, thisRRange - thisArmWidth / 2, "--", label=thisRow['Spiral Arm'], color=self._get_last_color())
