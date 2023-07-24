@@ -12,6 +12,9 @@ Here is a simple example of how to use mwplotlib:
 from mwplotlib import MilkyWay
 import matplotlib.pyplot as plt
 
+# Add the mwplotlib to the matplotlib.pyplot
+plt = MilkyWay.mw_plt(plt) # Add the mwplotlib to the matplotlib.pyplot
+
 # Plot the Milky Way in polar coordinates (region-style)
 plt.figure(figsize=(9, 9))
 plt.MilkyWay.shape(plot_type="polar", style="region")
